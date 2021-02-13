@@ -1,0 +1,78 @@
+
+def main():
+
+    participantes = input("Ingrese la cantidad de participantes: ") #Error con espacios
+    while not participantes.isnumeric():
+        participantes = input("Error. Ingrese la cantidad de participantes (Recuerde que solo debe ingresar numeros enteros): ") #Error con espacios ARREGLAR
+    guardar_palabras("Cuentos .txt", "palabras_cuentos_N.txt")
+    guardar_palabras("La araña negra - tomo 1 .txt", "palabras_La araña negra - tomo 1 _N.txt")
+    guardar_palabras("Las 1000 Noches y 1 Noche.txt", "palabras_Las 1000 Noches y 1 Noche_N.txt")
+
+        
+def guardar_palabras(ruta_texto, ruta_palabras):
+
+    lista_de_palabras = []
+    
+    with open(ruta_texto, "r") as e:
+        linea = e.readline()
+
+        lista_de_palabras = []
+        
+        while linea != "":
+
+            palabras_de_linea = linea.split("\n")
+            palabras_de_linea = linea.split(" ")
+        
+
+            
+
+
+            for palabra in palabras_de_linea:
+                pal_a_subir = ""
+                anterior = ""
+                for c in palabra:
+                    
+                    if c.isalpha():
+                        c = c.lower()
+                        if c == "á":
+                            pal_a_subir += "a"
+                        elif c == "é":
+                            pal_a_subir += "e"
+                        elif c == "í":
+                            pal_a_subir += "i"
+                        elif c == "ó":
+                            pal_a_subir += "o"
+                        elif c == "ú":
+                            pal_a_subir += "u"
+                        else:
+                            pal_a_subir += c
+                            
+                    else:
+                        if anterior.isalpha():
+                            if not pal_a_subir in lista_de_palabras:
+                        
+                                lista_de_palabras.append(pal_a_subir)
+                                
+                            anterior = ""
+                            pal_a_subir = ""
+                    anterior = c
+                
+                if pal_a_subir != "":
+                    
+                    if not pal_a_subir in lista_de_palabras:
+                        
+                        lista_de_palabras.append(pal_a_subir)
+
+            linea = e.readline()
+
+    lista_de_palabras = sorted(lista_de_palabras)
+    
+    with open(ruta_palabras, 'w') as s:
+
+        for p in lista_de_palabras:
+
+            s.write(p +'\n')
+
+
+main()
+       
