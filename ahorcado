@@ -9,6 +9,3 @@ def main():
     ga.generar_palabras()
 
 main()
-                
-        
-
