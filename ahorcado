@@ -2,9 +2,11 @@ import generar_archivos as ga
 
 def main():
 
-    participantes = input("Ingrese la cantidad de participantes: ") #Error con espacios
+    participantes = input("Ingrese la cantidad de participantes: ") 
+    participantes =  participantes.strip(' ')
     while not participantes.isnumeric():
-        participantes = input("Error. Ingrese la cantidad de participantes (Recuerde que solo debe ingresar numeros enteros): ") #Error con espacios ARREGLAR
+        participantes = input("Error. Ingrese la cantidad de participantes (Recuerde que solo debe ingresar numeros enteros): ")
+        participantes =  participantes.strip(' ')
 
     ga.generar_palabras()
 
