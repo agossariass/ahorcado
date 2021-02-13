@@ -1,4 +1,4 @@
-def guardar_palabras(ruta_texto, ruta_palabras):
+def guardar_palabras(ruta_texto, ruta_palabras):  #Arreglar errores de ñ y de ª
     """Recibe donde esta el archivo texto y donde se van a guardar las palabras del archivo texto. Selecciona donde estan las palabras y las guarda en la segunda ruta"""
 
     lista_de_palabras = []  #lista de donde las va a guardar, ordenar y luego subirlas al archivo
@@ -60,7 +60,7 @@ def guardar_palabras(ruta_texto, ruta_palabras):
 
 
 
-def generar_palabras():
+def generar_palabras(): #Arreglar errores de las ultimas palabras (no se si se agregan bien )
 
     
     guardar_palabras("Cuentos .txt", "palabras_cuentos_N.txt")
@@ -74,15 +74,15 @@ def generar_palabras():
         palabra_2 = texto_2.readline().strip('\n')
         palabra_3 = texto_3.readline().strip('\n')
 
-        while palabra_1 != "" and palabra_2 != "" and palabra_3 != "" :
+        while palabra_1 != "" and palabra_2 != "" and palabra_3 != "" :  #Bucle hasta que los archivos esten vacios
 
-            if palabra_1 == palabra_2 or palabra_1 == palabra_3:
+            if palabra_1 == palabra_2 or palabra_1 == palabra_3: #Si hay palabras iguales, saltea una palabra en un archivo
                 palabra_1 = texto_1.readline().strip('\n')
             if palabra_2 == palabra_3:
                 palabra_2 = texto_2.readline().strip('\n')
 
 
-            if palabra_1 < palabra_2 and palabra_1 < palabra_3:
+            if palabra_1 < palabra_2 and palabra_1 < palabra_3:  #Elige la palabra menor, la escribe en el archivo, y lee la siguiente linea
                 palabras.write(palabra_1 + '\n')
                 palabra_1 = texto_1.readline().strip('\n')
 
