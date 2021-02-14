@@ -1,12 +1,31 @@
 import generar_archivos as ga
+from random import shuffle 
+
+
+N = 10
 
 def main():
 
+    
+
     participantes = input("Ingrese la cantidad de participantes: ") 
     participantes =  participantes.strip(' ')
-    while not participantes.isnumeric():
-        participantes = input("Error. Ingrese la cantidad de participantes (Recuerde que solo debe ingresar numeros enteros): ")
+    while not participantes.isnumeric() or int(participantes) >= N or int(participantes) < 1:
+        participantes = input(f"Error. Ingrese la cantidad de participantes (Recuerde que solo debe ingresar numeros enteros y menor que {N}): ")
         participantes =  participantes.strip(' ')
+
+    nombres_participantes = []
+
+    for i in range ( int(participantes) ):
+        nombre = input ( f'Ingrese el nombre del jugador { i + 1 }: ' )
+        nombres_participantes.append( nombre )
+
+    shuffle(nombres_participantes)
+
+    print('El orden de los jugadores es: ')
+
+    for i in range (len(nombres_participantes)):
+        print(f'{i + 1}. {nombres_participantes[i]}')
 
     ga.generar_palabras()
 
